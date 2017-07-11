@@ -1,18 +1,65 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
-    <meta name="screen-orientation" content="portrait"/>
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="full-screen" content="yes">
-    <meta name="x5-fullscreen" content="true">
-    <title>快乐星期五</title>
-  </head>
-  <body>
-    <div id="app">
-    	<router-view></router-view>
-    </div>
-  </body>
+<head>
+<meta charset="utf-8"> 
+<title>圣杯布局</title>
+<style> 
+
+.HolyGrail {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+
+}
+
+header,
+footer {
+  flex: 0 0 5em;  /*竖直方向的长度变化  第三个参数*/
+  background-color: red;
+}
+
+.HolyGrail-body {
+  display: flex;
+  flex: 1;
+  background-color: green;
+}
+
+.HolyGrail-content {
+  /* 
+  flex是flex-grow flex-shrink flex-basis的组合简写，后两个可选
+  flex:1，即flex-grow:1，flex-shrink flex-basis两个取默认值 1和auto。
+  flex:1表示项目的放大比例，如果存在剩余空间，则放大。因为已经定义了左右两个侧边栏宽度，通过该属性，让中间栏占有剩余空间。
+ */
+  flex: 1;
+  background-color: blue;
+}
+
+.HolyGrail-nav, .HolyGrail-ads {
+  /* 两个边栏的宽度设为12em */
+  flex: 0 0 12em;
+}
+
+.HolyGrail-nav {
+  /* 导航放到最左边 */
+  order: -1;
+}
+</style>
+</head>
+<body>
+
+<body class="HolyGrail">
+  <header>...</header>
+  <div class="HolyGrail-body">
+    <main class="HolyGrail-content">...</main>
+    <nav class="HolyGrail-nav">...</nav>
+    <aside class="HolyGrail-ads">...</aside>
+  </div>
+  <footer>...</footer>
+</body>
+
+<p><b>注意:</b> Internet Explorer 9 及更早版本不支持 flex 属性。</p>
+<p><b>注意:</b> Internet Explorer 10 通过 -ms-flex 属性来支持。 IE11 及更新版本完全支持 flex 属性 (不需要 -ms- 前缀)。</p>
+<p><b>注意:</b> Safari 6.1 (及更新浏览器) 通过 -webkit-flex 属性支持。</p>
+
+</body>
 </html>
